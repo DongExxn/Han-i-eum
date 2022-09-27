@@ -15,6 +15,8 @@ import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
+import Stack from '@mui/material/Stack';
+
 
 const bull = (
     <Box
@@ -42,7 +44,7 @@ const rows = [
     { id: 8, Subject: "Frances", Name: "Rossini", age: 36 },
     { id: 9, Subject: "Roxie", Name: "Harvey", age: 65 },
 ];
-  
+
 
 function Market() {
     const { id } = useParams();
@@ -80,23 +82,24 @@ function Market() {
                         <h1>마켓 사진들</h1>
                     </div>
                     <div className={styles.column}>
-                        <h1>플리마켓 정보들</h1>
                         {isLoad === false ? (
-                            <p>로딩중...</p>
+                            <p >로딩중...</p>
                         ) : (
-                            <section>
-                                <h2>{data.name}</h2>
-                                <h2>
+                            <section className={styles.box}>
+                                <h1 className={styles.title_1}>플리마켓</h1>
+                                <Divider />
+                                <h1 className={styles.title_2}>{data.name}</h1>
+                                <h1 className={styles.title}>
                                     지역: {data.address.sido}{" "}
                                     {data.address.sigungu}
-                                </h2>
-                                <h2>상세위치: {data.address.detailAddress}</h2>
-                                <h2>
+                                </h1>
+                                <h1 className={styles.title_3}>상세위치: {data.address.detailAddress}</h1>
+                                <h1 className={styles.title}>
                                     시간: {data.openTime.slice(0, 5)} ~
                                     {data.closeTime.slice(0, 5)}
-                                </h2>
+                                </h1>
 
-                                <h2>
+                                <h1 className={styles.title}>
                                     운영기간:
                                     {new Date(data.startDate).getFullYear()}.
                                     {new Date(data.startDate).getMonth() + 1}.
@@ -104,11 +107,12 @@ function Market() {
                                     {new Date(data.endDate).getFullYear()}.
                                     {new Date(data.endDate).getMonth() + 1}.
                                     {new Date(data.endDate).getDate()}
-                                </h2>
-                                <div>관심마켓 {data.interestCount}</div>
+                                </h1>
+                                {/* <div className={styles.title}>관심마켓 {data.interestCount}</div> */}
+                                <Button className={styles.title_4} variant="contained">관심마켓 {data.interestCount}</Button>
                             </section>
                         )}
-                        <h1>부스 목록</h1>
+                        <h1 className={styles.title_1}>부스 목록</h1>
                         {isLoad === false ? (
                             <p>로딩중...</p>
                         ) : (
@@ -119,43 +123,8 @@ function Market() {
                                         columns={columns}
                                         pageSize={5}
                                         rowsPerPageOptions={[5]}
-                                        checkboxSelection
                                     />
-                                    <div>
-                                        <Card sx={{ minWidth: 275 }}>
-                                            <CardContent>
-                                                <Typography
-                                                    sx={{ fontSize: 14 }}
-                                                    color="text.secondary"
-                                                    gutterBottom
-                                                >
-                                                    Word of the Day
-                                                </Typography>
-                                                <Typography
-                                                    variant="h5"
-                                                    component="div"
-                                                >
-                                                    be{bull}nev{bull}o{bull}lent
-                                                </Typography>
-                                                <Typography
-                                                    sx={{ mb: 1.5 }}
-                                                    color="text.secondary"
-                                                >
-                                                    adjective
-                                                </Typography>
-                                                <Typography variant="body2">
-                                                    well meaning and kindly.
-                                                    <br />
-                                                    {'"a benevolent smile"'}
-                                                </Typography>
-                                            </CardContent>
-                                            <CardActions>
-                                                <Button size="small">
-                                                    Learn More
-                                                </Button>
-                                            </CardActions>
-                                        </Card>
-                                    </div>
+
                                 </div>
                             </section>
                         )}

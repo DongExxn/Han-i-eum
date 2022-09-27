@@ -1,17 +1,18 @@
-
 .column_wrap {
   display: flex;
   justify-content: center;
   height: 200vh;
 }
+
 .column_is_fixed {
   width: 50%;
   padding-right: 3.33%;
   /* float: left; */
 }
+
 .column {
   width: 50%;
-  background-color: turquoise;
+  background-color: rgb(225, 244, 242);
   padding-left: 3.33%;
 
 }
@@ -65,4 +66,40 @@
   align-items: flex-start;
 
   font-size: 1.1em;
+}
+
+.title {
+  text-align: left;
+  font-size: large;
+}
+
+.title_1 {
+  text-align: left;
+  text-decoration: underline;
+  margin: 15px 0px;
+  font-size: xx-large;
+}
+
+.title_2 {
+  text-align: left;
+  font-size: x-large;
+  margin: 15px 0px;
+}
+
+.title_3 {
+  text-align: left;
+  font-size: large;
+  color: rgb(156, 166, 165)
+}
+
+.title_4 {
+  position: absolute;
+
+}
+
+.box {
+  width: 700px;
+  height: 350px;
+  background-color: rgb(170, 212, 191);
+  border: 1px solid rgb(225, 244, 242);
 }
