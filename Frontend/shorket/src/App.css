@@ -27,15 +27,24 @@ div {
 }
 
 .area {
-    margin-top: 100px;
+  max-width: 1280px;
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+.area-1 {
+  margin: 0 auto;
+  margin-top: 100px;
+  margin-bottom: 30px;
 }
   
 .area-2 {
+  max-width: 1280px;
   margin: 0 auto;
   margin-top: 100px;
   padding: 40px;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
 }
 
 .area-3 {
@@ -58,19 +67,43 @@ div {
 .title {
   margin-top: 60px;
 }
-
-
-.Card {
+.market_card {
+  display: inline-block;
   height: 100%;
+  margin: 10px 12px;
+  width: 340px;
+  max-width: 360;
+  min-width: 200;
 }
 .info_box {
   /* background-color: tomato; */
   height: 180px; 
 }
+.marketList {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.MarketGrid {
+  display: flex;
+  justify-content: center;
+}
+
+
+.wishBooth_title {
+  margin: auto
+  /* textAlign: left, */
+}
+
+.wish_market_list {
+  display: flex;
+  justify-content: center;
+}
 
 /* Profile */
 .profile {
-  
+  margin-bottom: 30px;
 }
 
 .profile_card {
@@ -78,7 +111,8 @@ div {
 
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 0 160px;
 
 }
 .detail_box {
@@ -146,7 +180,7 @@ div {
 .snb_area {
   text-align: left; 
   width: 180px;
-  float: left;
+  /* float: left; */
 }
 .snb_main_title {
   margin: 0;

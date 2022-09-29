@@ -3,11 +3,7 @@ import "./App.css";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import { CookiesProvider } from "react-cookie";
 import { AuthProvider } from "./context/AuthProvider";
-
-import MainLayout from "./components/MainLayout";
-import RequireAuth from "./components/RequireAuth";
 
 import Home from "./pages/Home";
 import Login from "./pages/Login";
@@ -18,8 +14,13 @@ import Market from "./pages/Market";
 import Manage from "./pages/Manage";
 
 import EnrollBooth from "./pages/EnrollBooth";
-import { marketsDummyData } from "./constants/data";
+
+import MainLayout from "./components/MainLayout";
+import RequireAuth from "./components/RequireAuth";
+import PersistLogin from "./components/PersistLogin";
 import requireAuth from "./components/RequireAuth";
+
+import { marketsDummyData } from "./constants/data";
 
 const reducer = (state, action) => {
     let newState = [];
@@ -100,51 +101,53 @@ export default function App() {
                     }}
                 >
                     <BrowserRouter>
-                        {/* <CssBaseline /> */}
                         <div className="App">
                             <MainLayout>
                                 <Routes>
-                                    {/* public routes */}
-                                    <Route
-                                        path="/"
-                                        element={<Home />}
-                                        exact={true}
-                                    ></Route>
-                                    <Route
-                                        path="/login"
-                                        element={<Login />}
-                                    ></Route>
-                                    <Route
-                                        path="/join"
-                                        element={<Join />}
-                                    ></Route>
-                                    <Route
-                                        path="/search"
-                                        element={<Search />}
-                                    ></Route>
-                                    <Route
-                                        path="/market/:id"
-                                        element={<Market />}
-                                    ></Route>
-                                    <Route
-                                        path="/market/:id/booth/:id"
-                                        element={<div>부스상세 페이지</div>}
-                                    ></Route>
-                                    {/* protected routes */}
-                                    <Route element={<RequireAuth />}>
+                                    <Route element={<PersistLogin />}>
+                                        {/* public routes */}
                                         <Route
-                                            path="/my/*"
-                                            element={<My />}
+                                            path="/"
+                                            element={<Home />}
+                                            exact={true}
+                                        ></Route>
+                                        <Route
+                                            path="/login"
+                                            element={<Login />}
+                                        ></Route>
+                                        <Route
+                                            path="/join"
+                                            element={<Join />}
+                                        ></Route>
+                                        <Route
+                                            path="/search"
+                                            element={<Search />}
+                                        ></Route>
+                                        <Route
+                                            path="/market/:id"
+                                            element={<Market />}
+                                        ></Route>
+                                        <Route
+                                            path="/market/:id/booth/:id"
+                                            element={<div>부스상세 페이지</div>}
                                         ></Route>
 
-                                        <Route
-                                            path="/enrollBooth"
-                                            element={<EnrollBooth />}
-                                        ></Route>
-                                        <Route
-                                            path="/market/:id/manage"
-                                            element={<Manage />}
-                                        ></Route>
+                                        {/* protected routes */}
+                                        <Route element={<RequireAuth />}>
+                                            <Route
+                                                path="/my/*"
+                                                element={<My />}
+                                            ></Route>
+
+                                            <Route
+                                                path="/enrollBooth"
+                                                element={<EnrollBooth />}
+                                            ></Route>
+                                            <Route
+                                                path="/market/:id/manage"
+                                                element={<Manage />}
+                                            ></Route>
+                                        </Route>
                                     </Route>
 
                                     <Route

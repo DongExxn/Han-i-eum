@@ -26,3 +26,9 @@
 .menu_link {
   color: rgba(34,34,34,.8);
 }
+
+.content_area {
+  max-width: 1200px;
+  width: 80%;
+  background-color: #f6f6f6;
+}

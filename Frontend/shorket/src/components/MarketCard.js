@@ -34,10 +34,11 @@ const MarketCard = ({
 
     return (
         <Card
-            className="Card"
+            className="market_card"
             sx={{
-                maxWidth: 400,
-                minWidth: 288,
+                width: 340,
+                maxWidth: 360,
+                minWidth: 200,
             }}
         >
             <CardActionArea

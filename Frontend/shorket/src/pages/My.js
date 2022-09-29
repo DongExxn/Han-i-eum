@@ -1,3 +1,7 @@
+// Todo
+// 1.refresh token 발급하기
+// 2.
+
 import React, { useEffect, useState } from "react";
 import styles from "./My.module.css";
 
@@ -20,11 +24,6 @@ import { Breadcrumb, Layout, Menu } from "antd";
 import Interest from "../components/Interest.js";
 
 import "antd/dist/antd.css";
-import {
-    LaptopOutlined,
-    NotificationOutlined,
-    UserOutlined,
-} from "@ant-design/icons";
 
 const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
@@ -70,42 +69,44 @@ const MyPage = () => {
         getUser();
     }, []);
 
-    const testGet = () => {
-        console.log("!!!");
-        const getUser = async () => {
-            try {
-                const response = await axios.get("/users/", {
-                    headers: {
-                        // Authorization: `Bearer ${auth.accessToken}`,
-                        "X-Auth-Token": `${auth.accessToken}`,
-                    },
-                });
+    // const testGet = () => {
+    //     console.log("!!!");
+    //     const getUser = async () => {
+    //         try {
+    //             const response = await axios.get("/users/", {
+    //                 headers: {
+    //                     // Authorization: `Bearer ${auth.accessToken}`,
+    //                     "X-Auth-Token": `${auth.accessToken}`,
+    //                 },
+    //             });
 
-                console.log(response);
-            } catch (err) {
-                console.log(err?.response);
-            }
-        };
+    //             console.log(response);
+    //         } catch (err) {
+    //             console.log(err?.response);
+    //         }
+    //     };
 
-        getUser();
-    };
+    //     getUser();
+    // };
 
     return (
         <div className="area-2">
             <Sidebar />
-            <div className="content_area">
+            <div className={styles.content_area}>
                 <Routes>
                     <Route
                         path="/"
                         element={<Summary userData={myData} />}
                     ></Route>
-                    <Route path="/profile" element={<Profile />}></Route>
+                    <Route
+                        path="/profile"
+                        element={<Profile userData={myData} />}
+                    ></Route>
                     <Route path="/wishBooth" element={<WishBooth />}></Route>
                     <Route path="/wishMarket" element={<WishMarket />}></Route>
                 </Routes>
             </div>
-            <button onClick={() => refresh()}>Refresh</button>
-            <button onClick={() => testGet()}>test</button>
+            {/* <button onClick={() => refresh()}>Refresh</button> */}
         </div>
     );
 };
