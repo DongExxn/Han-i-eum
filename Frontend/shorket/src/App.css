@@ -71,7 +71,7 @@ div {
   display: inline-block;
   height: 100%;
   margin: 10px 12px;
-  width: 340px;
+  width: 290px;
   max-width: 360;
   min-width: 200;
 }
@@ -80,8 +80,9 @@ div {
   height: 180px; 
 }
 .marketList {
-  width: 80%;
+  width: 100%;
   display: flex;
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 

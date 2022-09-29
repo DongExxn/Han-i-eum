@@ -29,7 +29,7 @@ import MarketList from "../components/MarketList.js";
 const sortOptionList = [
     { value: "INTEREST", name: "인기순" },
     { value: "DICT", name: "가나다순" },
-    { value: "LATESET", name: "최신순" },
+    { value: "LATEST", name: "최신순" },
     { value: "VIEW", name: "조회순" },
 ];
 
@@ -62,7 +62,7 @@ const localeOptionList = [
 ];
 
 const Search = () => {
-    const [sortOption, setSortOption] = useState("LATESET");
+    const [sortOption, setSortOption] = useState("LATEST");
     const [dateOption, setDateOption] = useState("CURRENT");
     const [localeOption, setLocaleOption] = useState([]);
 
@@ -143,7 +143,7 @@ const Search = () => {
                         view: it.viewCount,
                     };
                 });
-                console.log(getData);
+                // console.log(getData);
 
                 setSearchResult(getData);
                 setIsSearch(true);
@@ -178,6 +178,7 @@ const Search = () => {
             api = `sort=${sortOption}&date=${dateOption}&locals=${locale}&page=0`;
         }
         setSearchWord(api);
+        console.log(searchWord);
     }, [sortOption, dateOption, localeOption]);
 
     const children = (

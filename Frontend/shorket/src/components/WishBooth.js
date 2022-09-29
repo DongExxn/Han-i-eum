@@ -11,6 +11,9 @@ import {
     Divider,
 } from "@mui/material";
 
+function createData(market, booth, date, location) {
+    return { market, booth, date, location };
+}
 const rows = [
     createData("ㅇㅇㅇㅇㅇ", "코딩동아리", "2022.09.01", "아주대학교병원"),
     createData("ㅁㅁㅁㅁㅁ", "한이음동아리", 9.0, 37),
@@ -20,10 +23,6 @@ const rows = [
 ];
 
 function WishBooth() {
-    function createData(market, booth, date, location) {
-        return { market, booth, date, location };
-    }
-
     return (
         <div>
             <h1 className="wishBooth_title">관심 부스</h1>

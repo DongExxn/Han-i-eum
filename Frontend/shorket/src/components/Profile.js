@@ -13,11 +13,12 @@ const ROLE = {
     S: "판매자",
 };
 
-function Profile({ user }) {
+const Profile = ({ userData }) => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        console.log(user);
+        // console.log("Profile");
+        // console.log(userData);
     }, []);
 
     return (
@@ -32,13 +33,13 @@ function Profile({ user }) {
                         fontSize: 30,
                     }}
                 >
-                    {user?.nickName?.slice(0, 1).toUpperCase()}
+                    {userData?.nickName?.slice(0, 1).toUpperCase()}
                 </Avatar>
                 <div className="detail_box">
-                    <div>{user?.nickName}</div>
-                    <div>{user?.email}</div>
+                    <div>{userData?.nickName}</div>
+                    <div>{userData?.email}</div>
                 </div>
-                <div>{ROLE[user?.userRole]}</div>
+                <div>{ROLE[userData?.userRole]}</div>
                 <Button
                     onClick={() => {
                         navigate("/my/profile");
@@ -50,6 +51,6 @@ function Profile({ user }) {
             <Divider />
         </section>
     );
-}
+};
 
 export default Profile;
