@@ -29,16 +29,16 @@ const count = 3;
 const fakeDataUrl = `https://randomuser.me/api/?results=${count}&inc=name,gender,email,nat,picture&noinfo`;
 
 export const Summary = ({ userData }) => {
-    const [data, setData] = useState([]);
+    // const [data, setData] = useState([]);
     useEffect(() => {
-        // console.log("Summary");
-        // console.log(userData);
-        setData(userData);
+        console.log("Summary");
+        // setData(userData);
+        console.log(userData);
     }, []);
 
     return (
         <>
-            <Profile userData={data} />
+            <Profile userData={userData} />
             <WishMarket />
             <WishBooth />
             <div>

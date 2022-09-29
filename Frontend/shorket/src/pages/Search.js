@@ -76,8 +76,9 @@ const Search = () => {
 
     // handle
     const handleSortOptionChange = (event) => {
+        // console.log(event.target.value);
         setSortOption(event.target.value);
-        console.log(sortOption);
+        setSearchWord(api);
     };
 
     const handleDateOptionChange = (event) => {
@@ -107,13 +108,20 @@ const Search = () => {
 
     const handleSearchWordChange = (event) => {
         setSearchWord(event.target.value);
-        console.log(searchWord);
+        // handleSearch();
+    };
+
+    const handleSearchButtonClick = () => {
+        const api = makeAPIText();
+        setSearchWord(api);
+        // handleSearch();
     };
 
     const handleSearch = () => {
         axios
             .get(`/markets?${searchWord}`)
             .then((res) => {
+                // console.log(res);
                 // console.log(res.data.markets);
 
                 const getData = res.data.markets.map((it) => {
@@ -153,15 +161,7 @@ const Search = () => {
             });
     };
 
-    useEffect(() => {
-        handleSearch();
-    }, []);
-
-    useEffect(() => {
-        handleSearch();
-    }, [sortOption]);
-
-    useEffect(() => {
+    const makeAPIText = () => {
         let api = "";
         let locale = "";
         if (
@@ -177,9 +177,62 @@ const Search = () => {
             locale = encodeURIComponent(locale);
             api = `sort=${sortOption}&date=${dateOption}&locals=${locale}&page=0`;
         }
-        setSearchWord(api);
+        return api;
+    };
+
+    useEffect(() => {
+        handleSearch();
+    }, []);
+
+    useEffect(() => {
         console.log(searchWord);
-    }, [sortOption, dateOption, localeOption]);
+        handleSearch();
+    }, [searchWord]);
+
+    useEffect(() => {
+        // let api = "";
+        // let locale = "";
+        // if (
+        //     localeOption.length === 0 ||
+        //     localeOption.length === localeOptionList.length
+        // ) {
+        //     api = `sort=${sortOption}&date=${dateOption}&page=0`;
+        // } else {
+        //     localeOption.map((item) => {
+        //         locale += `${localeOptionList[item - 1].temp},`;
+        //     });
+        //     locale = locale.slice(0, -1);
+        //     locale = encodeURIComponent(locale);
+        //     api = `sort=${sortOption}&date=${dateOption}&locals=${locale}&page=0`;
+        // }
+        // console.log(api);
+        // setSearchWord(api);
+    }, [dateOption, localeOption]);
+
+    useEffect(() => {
+        // let api = "";
+        // let locale = "";
+        // if (
+        //     localeOption.length === 0 ||
+        //     localeOption.length === localeOptionList.length
+        // ) {
+        //     api = `sort=${sortOption}&date=${dateOption}&page=0`;
+        // } else {
+        //     localeOption.map((item) => {
+        //         locale += `${localeOptionList[item - 1].temp},`;
+        //     });
+        //     locale = locale.slice(0, -1);
+        //     locale = encodeURIComponent(locale);
+        //     api = `sort=${sortOption}&date=${dateOption}&locals=${locale}&page=0`;
+        // }
+        // console.log(api);
+        const api = makeAPIText();
+        setSearchWord(api);
+    }, [sortOption]);
+
+    useEffect(() => {
+        handleSearch();
+    }, [sortOption]);
 
     const children = (
         <>
@@ -314,7 +367,7 @@ const Search = () => {
                         <Button
                             variant="contained"
                             className={styles.searchButton}
-                            onClick={handleSearch}
+                            onClick={handleSearchButtonClick}
                         >
                             필터 적용하기
                         </Button>
@@ -360,6 +413,6 @@ const Search = () => {
             </div>
         </div>
     );
-};
+};;;
 
 export default Search;

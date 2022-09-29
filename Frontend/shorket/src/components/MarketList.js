@@ -38,6 +38,7 @@ function MarketList({ list }) {
         <div className="marketList">
             {list.map((market) => (
                 <MarketCard
+                    key={market.id}
                     id={market.id}
                     img={market.img}
                     url={market.url}

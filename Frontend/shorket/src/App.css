@@ -82,7 +82,7 @@ div {
 .marketList {
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   flex-wrap: wrap;
 }
 

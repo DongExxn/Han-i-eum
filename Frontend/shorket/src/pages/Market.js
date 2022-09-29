@@ -65,6 +65,8 @@ function Market() {
     const [data, setData] = useState([]);
     const [isLoad, setIsLoad] = useState(false);
     const [isBoothLoad, setIsBoothLoad] = useState(false);
+    const [likeCount, setLikeCount] = useState(0);
+
     const [boothList, setBoothList] = useState([]);
     const [periodText, setPeriodText] = useState("");
 
@@ -78,6 +80,7 @@ function Market() {
             try {
                 const response = await axiosPrivate.post(`/markets/${id}/like`);
                 console.log(response);
+                setLikeCount(likeCount + 1);
             } catch (err) {
                 console.log(err?.response);
                 if (!err?.response) {
@@ -108,8 +111,10 @@ function Market() {
             .get(`/markets/${id}`)
             .then((res) => {
                 setData(res.data);
+                setLikeCount(res.data.interestCount);
                 console.log(res);
                 setIsLoad(true);
+
                 // getMarketList();
             })
             .catch(function (error) {
@@ -216,7 +221,7 @@ function Market() {
                                     startIcon={<BookmarkBorderIcon />}
                                     onClick={handleInterestMarketClick}
                                 >
-                                    관심마켓 {data.interestCount}
+                                    관심마켓 {likeCount}
                                 </Button>
                             </section>
                         )}
