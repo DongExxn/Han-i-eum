@@ -27,7 +27,6 @@ function SliderImg({ list, imgList }) {
             <h1>슬라이드 {index + 1}</h1>
         </SwiperSlide>
     ));
-
     const imgSlides = imgList.map((item, index) => (
         <SwiperSlide
             key={index}
@@ -37,7 +36,7 @@ function SliderImg({ list, imgList }) {
                 justifyContent: "center",
             }}
         >
-            <img src={item} />
+            <img src={item} style={{ width: "auto" }} />
         </SwiperSlide>
     ));
 
