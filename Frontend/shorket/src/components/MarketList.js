@@ -16,40 +16,43 @@ import {
     CardActions,
     Typography,
     Container,
+    autocompleteClasses,
 } from "@mui/material";
 
-const theme = createTheme();
+const theme = createTheme({
+    breakpoints: {
+        values: {
+            mobile: 0,
+            tablet: 640,
+            laptop: 1024,
+            desktop: 1200,
+        },
+    },
+});
 
 function MarketList({ list }) {
-    const marketList = list;
+    // const marketList = list;
 
     return (
-        <ThemeProvider theme={theme}>
-            <Container
-                sx={{ py: 8 }}
-                maxWidth="lg"
-                style={{ paddingTop: "10px" }}
-            >
-                <Grid container spacing={3}>
-                    {marketList.map((market) => (
-                        <Grid key={market.id} item xs={12} sm={6} md={4}>
-                            <MarketCard
-                                id={market.id}
-                                img={market.img}
-                                url={market.url}
-                                name={market.name}
-                                location={market.location}
-                                detail={market.detail}
-                                time={market.time}
-                                period={market.period}
-                                like={market.like}
-                                view={market.view}
-                            />
-                        </Grid>
-                    ))}
-                </Grid>
-            </Container>
-        </ThemeProvider>
+        // <ThemeProvider theme={theme}>
+        <div className="marketList">
+            {list.map((market) => (
+                <MarketCard
+                    key={market.id}
+                    id={market.id}
+                    img={market.img}
+                    url={market.url}
+                    name={market.name}
+                    location={market.location}
+                    detail={market.detail}
+                    time={market.time}
+                    period={market.period}
+                    like={market.like}
+                    view={market.view}
+                />
+            ))}
+        </div>
+        // </ThemeProvider>
     );
 }
 

@@ -2,23 +2,43 @@
 .column_wrap {
   display: flex;
   justify-content: center;
-  height: 200vh;
+  margin-bottom: 20px;
+  max-width: 1280px;
+  margin: auto;
+  padding: 30px 40px 120px;
 }
 .column_is_fixed {
   width: 50%;
   padding-right: 3.33%;
   /* float: left; */
 }
+
+.slider_img {
+  max-width: 560px;
+}
+
+.description {
+  padding: 20px;
+  background-color: #e5e5e5;
+  min-height: 300px;
+  max-width: 560px;
+
+}
+
+
 .column {
+  border-left: 1px solid #e5e5e5;
   width: 50%;
-  background-color: turquoise;
   padding-left: 3.33%;
 
 }
 
 .map_area {
-  height: 400px;
-  background-color: thistle;
+  display: inline-block;
+  text-align: center;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 .others_area {
@@ -65,4 +85,57 @@
   align-items: flex-start;
 
   font-size: 1.1em;
+}
+
+
+.title {
+  text-align: left;
+  font-size: large;
+}
+
+.title_1 {
+  text-align: left;
+  text-decoration: underline;
+  font-size: xx-large;
+  margin-bottom: 30px;
+}
+
+.title_2 {
+  text-align: left;
+  font-size: x-large;
+  margin: 5px 0px;
+}
+
+.title_3 {
+  text-align: left;
+  font-size: large;
+  color: rgb(156, 166, 165)
+}
+
+.title_4 {
+  position: absolute;
+
+}
+
+.info_section {
+  margin-bottom: 100px;
+  
+}
+
+.info_box {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.info {
+  text-align: left;
+  font-size: large;
+  margin: 10px 0px;
+}
+
+.button {
+  margin-top: 20px;
+  font-size: large;
+  width: 100%;
+  height: 60px;
 }

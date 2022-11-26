@@ -10,16 +10,24 @@ import Button from "@mui/material/Button";
 import { MarketStateContext } from "../App";
 import { bannerBgColor } from "../constants/data";
 
+
+
 import { useFetch } from "./../hooks/useFetch";
 
 // - 더보기 -> 4개씩 더 로드 하는걸로 변경
-
+const imgList = [
+    "assets/0.jpg",
+    "assets/1.jpg",
+    "assets/3.jpg",
+    "assets/5.jpg",
+];
 function Home() {
     const marketList = useContext(MarketStateContext);
     const navigate = useNavigate();
 
     const [data, setData] = useState([]); // get으로 가져온 데이터
     const colorList = bannerBgColor;
+
     useEffect(() => {
         axios
             .get(`/markets?sort=LATEST&date=CURRENT&page=0`)
@@ -71,36 +79,25 @@ function Home() {
                 console.log(error);
             });
     };
-    const postClick = () => {
-        axios
-            .post("users/email", {
-                email: "temp000@naver.com",
-            })
-            // .post("http://52.79.146.185:8080/api/users/email", {
-            //     email: "temp000@naver.com",
-            // })
-            .then((res) => console.log(res.data))
-            .catch(function (error) {
-                console.log(error);
-            });
-    };
-
-    function handleClick() {
-        navigate("/search");
-    }
 
     return (
-        <div className="area">
-            <Banner list={colorList} />
-            <h1 className="title">진행중인 마켓</h1>
-            <MarketList list={marketList} />
-            <MarketList list={data} />
-            <Button className="button" variant="outlined" onClick={handleClick}>
-                더보기
-            </Button>
-
-            <button onClick={getClick}>get</button>
-            <button onClick={postClick}>post</button>
+        <div className="area-1">
+            <Banner imgList={imgList} />
+            <div className="area">
+                <h1 className="title">진행중인 마켓</h1>
+                {/* <MarketList list={marketList} /> */}
+                <MarketList list={data} />
+                <Button
+                    className="button"
+                    variant="outlined"
+                    onClick={() => {
+                        navigate("/search");
+                    }}
+                >
+                    더보기
+                </Button>
+                {/* <button onClick={getClick}>get</button> */}
+            </div>
         </div>
     );
 }

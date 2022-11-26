@@ -33,13 +33,7 @@ const MarketCard = ({
         temp = process.env.PUBLIC_URL + `assets/market_img.png`;
 
     return (
-        <Card
-            className="Card"
-            sx={{
-                maxWidth: 400,
-                minWidth: 288,
-            }}
-        >
+        <Card className="market_card">
             <CardActionArea
                 style={{ cursor: "pointer" }}
                 component={Link}
@@ -57,7 +51,7 @@ const MarketCard = ({
 
                 <CardContent className="info_box" sx={{ flexGrow: 1 }}>
                     <Typography gutterBottom component="h2" variant="h5">
-                        {name.length > 14 ? name.slice(0, 13) + "..." : name}
+                        {name.length > 12 ? name.slice(0, 11) + "..." : name}
                     </Typography>
                     <Typography
                         className="location"

@@ -1,10 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
-
-import styles from "./Header.module.css";
-
 import useAuth from "../hooks/useAuth";
 
+import styles from "./Header.module.css";
 import { Typography, Menu } from "antd";
 import {
     TagOutlined,
@@ -64,13 +62,19 @@ const items = [
 ];
 
 function Header() {
-    const { auth } = useAuth();
+    const { auth, setAuth } = useAuth();
 
     const [isLogin, setIsLogin] = useState(false);
     const [current, setCurrent] = useState(""); // 현재 선택된 메뉴 스타일 적용
 
     const onClick = (e) => {
         setCurrent(e.key);
+    };
+
+    const onLogout = () => {
+        setAuth(null);
+        // localStorage.removeItem("auth");
+        setIsLogin(false);
     };
 
     return (
@@ -89,7 +93,8 @@ function Header() {
                         <li className={styles.top_item}>
                             {auth?.userEmail ? (
                                 <Link
-                                    to="/login"
+                                    to="/"
+                                    onClick={onLogout}
                                     style={{ color: "rgba(34, 34, 34, 0.8)" }}
                                 >
                                     로그아웃
